@@ -1,29 +1,29 @@
 // fn main() {
-//     // let mut s = String::from("hello");
+//     let mut s = String::from("hello");
 // 
-//     // s.push_str(", world!");
-//     // println!("{}", s);
+//     s.push_str(", world!");
+//     println!("{}", s);
 // 
-//     // let s1 = "hello";
-//     // let s1 = String::from("hello");
-//     // let s2 = s1;
-//     // println!("{}, world!", s1);
+//     let s1 = "hello";
+//     let s1 = String::from("hello");
+//     let s2 = s1;
+//     println!("{}, world!", s1);
 // 
-//     // let s2 = s1.clone();
-//     // println!("s1 = {}, s2 = {}", s1, s2);
+//     let s2 = s1.clone();
+//     println!("s1 = {}, s2 = {}", s1, s2);
 // 
 // 
-//     // Ownership and Functions
-//     // let s = String::from("hello");
+//     Ownership and Functions
+//     let s = String::from("hello");
 // 
-//     // takes_ownership(s);
-//     // Invalid display s
-//     // println!("After {}", s);
+//     takes_ownership(s);
+//     Invalid display s
+//     println!("After {}", s);
 // 
-//     // let x = 5;
+//     let x = 5;
 // 
-//     // makes_copy(x);
-//     // println!("After {}", x);
+//     makes_copy(x);
+//     println!("After {}", x);
 // }
 // 
 // 
@@ -73,16 +73,85 @@
 // }
 //
 
-fn main() {
-    let s1 = String::from("hello world!");
-    // let s1 = "hello";
+// fn main() {
+//     let s1 = String::from("hello world!");
+//     // let s1 = "hello";
+// 
+//     let (s2, len) = calculate_length(s1);
+//     println!("The length of {} is {}", s2, len);
+// }
+// 
+// fn calculate_length(s: String) -> (String, usize) {
+//     let len = s.len();
+// 
+//     (s, len)
+// }
 
-    let (s2, len) = calculate_length(s1);
-    println!("The length of {} is {}", s2, len);
+// [4.2] References and Borrowing
+
+// fn main() {
+//     let s1 = String::from("hello");
+// 
+//     let len = calculate_length(&s1);
+// }
+// 
+// fn calculate_length(s: &String) -> usize {
+//     s.len()
+// }
+
+// Mutable References
+
+// fn main() {
+//   let mut s = String::from("hello");
+// 
+//   change(&mut s);
+// }
+// 
+// fn change(some_string: &mut String) {
+//   some_string.push_str(", world");
+// }
+
+// fn main () {
+//     let mut s = String::from("hello");
+// 
+//     {
+//         let r1 = &mut s;
+//         println!("{}", r1);
+//     }
+// 
+//     let r2 = &mut s;
+// 
+//     println!("{}", r2);
+// }
+
+// fn main() {
+//     let mut s = String::from("hello");
+// 
+//     let r1 = &s; // no problem
+//     let r2 = &s; // no problem
+// 
+//     println!("{} and {}", r1, r2);
+//     // r1 and r2 are no longer used after this point
+// 
+//     let r3 = &mut s; // no problem
+//     println!("{}", r3);
+// }
+
+// Dangling References
+
+fn main() {
+    // let reference_to_nothing = dangle();
+    let _reference_to_nothing = no_dangle();
 }
 
-fn calculate_length(s: String) -> (String, usize) {
-    let len = s.len();
+// fn dangle() -> &String {
+//     let s = String::from("hello");
+// 
+//     &s
+// }
 
-    (s, len)
-} 
+fn no_dangle() -> String {
+    let s = String::from("hello");
+
+    s
+}

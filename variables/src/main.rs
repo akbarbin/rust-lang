@@ -57,9 +57,9 @@ fn main() {
 
     let first = a[0];
     let second = a[1];
-    let invalid = a[10];
+    // let invalid = a[10];
 
-    println!("The values: {}, {}, {}", first, second, invalid);
+    // println!("The values: {}, {}, {}", first, second, invalid);
 
     // 3.3 Functions
 }
